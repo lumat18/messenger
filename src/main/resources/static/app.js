@@ -53,7 +53,12 @@ function showGreeting(message) {
     div.appendChild(timestampSpan);
     div.appendChild(userSpan);
     div.appendChild(textSpan);
-    $("#all-messages-table").append(div);
+    let allMessages = $("#all-messages-table");
+    allMessages.append(div);
+
+    allMessages.stop().animate({
+        scrollTop: allMessages[0].scrollHeight
+    }, 500);
 }
 
 $(function () {

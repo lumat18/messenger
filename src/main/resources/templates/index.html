@@ -13,7 +13,7 @@
 <body>
 <h1>Hello</h1>
 
-<div id="all-messages-table">
+<div id="all-messages-table" style="overflow: auto; height: 50vh">
     <div th:each="message : ${allMessages}">
         <span th:text="${message.getTimestamp()} "></span>
         <span th:style="'color:'+${message.getUser().getColorCode()} +';'"
