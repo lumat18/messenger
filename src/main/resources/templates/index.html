@@ -8,5 +8,11 @@
 <body>
 <h1>Hello</h1>
 <h3 th:text="'Time: ' + ${time}"></h3>
+
+<form method="post" th:object="${newMessage}">
+    <label for="message-input">Your message: </label>
+    <input id="message-input" th:field="*{text}" type="text"/>
+    <button type="submit">Send</button>
+</form>
 </body>
 </html>
