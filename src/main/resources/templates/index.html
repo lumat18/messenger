@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
->
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Messenger</title>
@@ -13,22 +13,19 @@
 <body>
 <h1>Hello</h1>
 
-<table id="all-messages-table">
-    <!--    <th:block th:each="message : ${allMessages}">-->
-    <!--        <tr>-->
-    <!--            <td>-->
-    <!--                <span th:text="${message.getTimestamp()} "></span>-->
-    <!--                <span th:style="'color:'+${message.getUser().getColorCode() +';'}"-->
-    <!--                      th:text="${message.getUser().getName()} + ' : '"></span>-->
-    <!--                <span th:text="${message.getText()}"></span>-->
-    <!--            </td>-->
-    <!--        </tr>-->
-    <!--    </th:block>-->
-</table>
+<div id="all-messages-table">
+    <div th:each="message : ${allMessages}">
+        <span th:text="${message.getTimestamp()} "></span>
+        <span th:style="'color:'+${message.getUser().getColorCode()} +';'"
+              th:text="${message.getUser().getName()} + ' : '"></span>
+        <span th:text="${message.getText()}"></span>
+    </div>
+</div>
 
 <form>
     <label for="message-input">Your message: </label>
     <input id="message-input" type="text"/>
+    <input hidden id="username-input" type="text" th:value="${username}">
     <button id="send" type="submit">Send</button>
 </form>
 </body>

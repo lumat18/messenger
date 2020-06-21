@@ -14,10 +14,8 @@ public class MessageService {
 
     private List<Message> messages = new ArrayList<>();
 
-//    private final UsernameService usernameService;
-
     public void postPublicMessage(final SendMessageDto messageDto) {
-        messages.add(new Message(messageDto.getText(), LocalDateTime.now(), new User("test")));
+        messages.add(new Message(messageDto.getText(), LocalDateTime.now(), new User(messageDto.getUsername())));
     }
 
     public List<Message> readAllPublicMessages() {

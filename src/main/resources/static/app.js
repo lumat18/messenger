@@ -32,15 +32,28 @@ function disconnect() {
 }
 
 function sendMessage() {
-    stompClient.send("/app/publish-message", {}, JSON.stringify({'text': $("#message-input").val()}));
+    let username = $("#username-input");
+    let message = $("#message-input");
+    stompClient.send("/app/publish-message", {}, JSON.stringify({'text': message.val(), 'username': username.val()}));
+    $('#message-input').val("");
 }
 
 function showGreeting(message) {
-    $("#all-messages-table").append("<tr>" +
-        "<td>" + message.timestamp + ' ' + "</td>" +
-        "<td>" + message.user.name + ' : ' + "</td>" +
-        "<td>" + message.text + "</td>" +
-        "</tr>");
+    let div = document.createElement('div');
+    let timestampSpan = document.createElement('span');
+    timestampSpan.textContent = message.timestamp + ' ';
+
+    let userSpan = document.createElement('span');
+    userSpan.textContent = message.user.name + ' : ';
+    userSpan.style = 'color: ' + message.user.colorCode + ';';
+
+    let textSpan = document.createElement('span');
+    textSpan.textContent = message.text;
+
+    div.appendChild(timestampSpan);
+    div.appendChild(userSpan);
+    div.appendChild(textSpan);
+    $("#all-messages-table").append(div);
 }
 
 $(function () {
