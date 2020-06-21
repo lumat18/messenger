@@ -7,7 +7,14 @@
 </head>
 <body>
 <h1>Hello</h1>
-<h3 th:text="'Time: ' + ${time}"></h3>
+
+<table>
+    <th:block th:each="message : ${allMessages}">
+        <tr>
+            <td th:text="${message}">...</td>
+        </tr>
+    </th:block>
+</table>
 
 <form method="post" th:object="${newMessage}">
     <label for="message-input">Your message: </label>
