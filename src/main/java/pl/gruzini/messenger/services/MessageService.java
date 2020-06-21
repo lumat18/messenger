@@ -3,6 +3,7 @@ package pl.gruzini.messenger.services;
 import org.springframework.stereotype.Service;
 import pl.gruzini.messenger.dto.SendMessageDto;
 import pl.gruzini.messenger.model.Message;
+import pl.gruzini.messenger.model.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class MessageService {
     }
 
     public void postPublicMessage(final SendMessageDto messageDto) {
-        messages.add(new Message(messageDto.getText(), LocalDateTime.now(), usernameService.getUsername()));
+        messages.add(new Message(messageDto.getText(), LocalDateTime.now(), new User(usernameService.getUsername())));
     }
 
     public List<Message> readAllPublicMessages() {

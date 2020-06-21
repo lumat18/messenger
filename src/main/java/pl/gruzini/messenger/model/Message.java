@@ -12,7 +12,7 @@ public class Message {
 
     private final String text;
     private final LocalDateTime timestamp;
-    private final String username;
+    private final User user;
 
     public String getTimestamp() {
         return timestamp.format(DATE_TIME_FORMATTER);

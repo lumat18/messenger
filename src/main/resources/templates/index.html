@@ -13,7 +13,8 @@
         <tr>
             <td>
                 <span th:text="${message.getTimestamp()} "></span>
-                <span th:text="${message.getUsername()} + ' : '"></span>
+                <span th:style="'color:'+${message.getUser().getColorCode() +';'}"
+                      th:text="${message.getUser().getName()} + ' : '"></span>
                 <span th:text="${message.getText()}"></span>
             </td>
         </tr>
