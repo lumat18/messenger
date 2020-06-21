@@ -13,8 +13,14 @@ public class MessageService {
 
     private List<Message> messages = new ArrayList<>();
 
+    private final UsernameService usernameService;
+
+    public MessageService(UsernameService usernameService) {
+        this.usernameService = usernameService;
+    }
+
     public void postPublicMessage(final SendMessageDto messageDto) {
-        messages.add(new Message(messageDto.getText(), LocalDateTime.now()));
+        messages.add(new Message(messageDto.getText(), LocalDateTime.now(), usernameService.getUsername()));
     }
 
     public List<Message> readAllPublicMessages() {

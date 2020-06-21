@@ -35,7 +35,7 @@ public class FrontendController {
 
     private List<String> convertMessagesToText(final List<Message> messages) {
         return messages.stream()
-                .map(message -> message.getTimestamp().format(DATE_TIME_FORMATTER) + " : " + message.getText())
+                .map(message -> message.getTimestamp().format(DATE_TIME_FORMATTER) + " " + message.getUsername() + " : " + message.getText())
                 .collect(Collectors.toList());
     }
 
