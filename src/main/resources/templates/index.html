@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <title>Messenger</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="/app.js"></script>
 </head>
 <body>
-<h1>Hello</h1>
+<h1>Hello <span th:text="${username}"></span></h1>
 
-<div id="all-messages-table" style="overflow: auto; height: 50vh">
+<div class="message-container" id="all-messages-table">
     <div th:each="message : ${allMessages}">
         <span th:text="${message.getTimestamp()} "></span>
         <span th:style="'color:'+${message.getUser().getColorCode()} +';'"
