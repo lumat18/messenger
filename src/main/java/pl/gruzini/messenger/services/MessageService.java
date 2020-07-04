@@ -15,7 +15,7 @@ public class MessageService {
     private List<Message> messages = new ArrayList<>();
 
     public Message postPublicMessage(final SendMessageDto messageDto, final String sessionId) {
-        final Message message = new Message(messageDto.getText(), LocalDateTime.now(), new User(sessionId));
+        final Message message = new Message(messageDto.getText(), LocalDateTime.now(), new User(sessionId, sessionId));
         messages.add(message);
         return message;
     }
