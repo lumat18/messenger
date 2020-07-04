@@ -17,8 +17,8 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/all-messages', function (greeting) {
-            showGreeting(JSON.parse(greeting.body));
+        stompClient.subscribe('/topic/all-messages', function (message) {
+            showGreeting(JSON.parse(message.body));
         });
     });
 }
