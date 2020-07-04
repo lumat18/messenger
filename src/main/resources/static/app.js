@@ -34,7 +34,8 @@ function disconnect() {
 function sendMessage() {
     let username = $("#username-input");
     let message = $("#message-input");
-    stompClient.send("/app/publish-message", {}, JSON.stringify({'text': message.val(), 'username': username.val()}));
+    stompClient.send("/app/publish-message", {}, JSON.stringify(
+        {'text': message.val()}));
     $('#message-input').val("");
 }
 

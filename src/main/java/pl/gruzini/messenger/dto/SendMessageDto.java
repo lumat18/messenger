@@ -7,5 +7,4 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SendMessageDto {
     private String text;
-    private String username;
 }

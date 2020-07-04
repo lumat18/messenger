@@ -1,7 +1,10 @@
 package pl.gruzini.messenger.controllers;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
+import org.springframework.messaging.support.MessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 import pl.gruzini.messenger.dto.SendMessageDto;
 import pl.gruzini.messenger.model.Message;
@@ -18,7 +21,8 @@ public class MessageController {
 
     @MessageMapping("/publish-message")
     @SendTo("/topic/all-messages")
-    public Message greeting(SendMessageDto message) throws Exception {
-        return messageService.postPublicMessage(message);
+    public Message greeting(@Payload SendMessageDto message, MessageHeaderAccessor messageHeaderAccessor) throws Exception {
+        final String sessionId = ((StompHeaderAccessor) messageHeaderAccessor).getSessionId();
+        return messageService.postPublicMessage(message, sessionId);
     }
 }
